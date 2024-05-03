@@ -28,10 +28,24 @@ else
 	exit 1
 fi
 
-#Verify the desktop shortcut was created
+#Write needed script to set xhost access and launch notepad++
+#This is needed to set the xhost without chromeOS user needing to 
+#Open a terminal session each login.
+sudo echo "#!/bin/bash\n\n" > /opt/launch_notepad-plus-plus.sh
+sudo echo "#set xhost access\n" >> /opt/launch_notepad-plus-plus.sh
+sudo echo "xhost +\n" >> /opt/launch_notepad-plus-plus.sh
+sudo echo "#launch notepad-plus-plus snap\n" >> /opt/launch_notpad-plus-plus.sh
+sudo echo "Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/notepad-plus-plus_notepad-plus-plus.desktop /snap/bin/notepad-plus-plus %F" >> /opt/launch_notepad-plus-plus.sh
 
+#Verify the desktop shortcut was created
 if [[ -f /usr/share/applications/notepad-plus-plus_notepad-plus-plus.desktop ]]; then
-	echo "All complete.  Use app drawer to find and run notepad++"
+	# replace the Exec line to point to needed script that will set the xhost access everytime the notepad++ snap is ran from the chromeOS launcher
+	sed -i '/Exec/ s/\=env\ BAMF_DESKTOP_FILE_HINT\=\/var\/lib\/snapd\/desktop\/applications\/notepad-plus-plus_notepad-plus-plus\.desktop\ \/snap\/bin\/notepad-plus-plus\ \%F/\=\/opt\/test.sh/' notepad-plus-plus_notepad-plus-plus.desktop
+	_line=$(cat notepad-plus-plus_notepad-plus-plus.desktop | grep Exec)
+	if [[ $_line == "Exec=/opt/test.sh" ]]; then
+		echo "All complete.  Use app drawer to find and run notepad++"
+	else
+		echo "Error writing the desktop file.  Contact your Technology Administrator.  Exiting now!"
 else
 	echo "\n\n\nApp Icon and shortcut was not created!! Exiting now!"
 	exit 1

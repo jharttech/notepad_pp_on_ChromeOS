@@ -46,6 +46,7 @@ if [[ -f /usr/share/applications/notepad-plus-plus_notepad-plus-plus.desktop ]];
 		echo "All complete.  Use app drawer to find and run notepad++"
 	else
 		echo "Error writing the desktop file.  Contact your Technology Administrator.  Exiting now!"
+	fi
 else
 	echo "\n\n\nApp Icon and shortcut was not created!! Exiting now!"
 	exit 1

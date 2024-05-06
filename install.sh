@@ -48,7 +48,7 @@ cd ~/
 #Verify the desktop shortcut was created
 if [[ -f /usr/share/applications/notepad-plus-plus_notepad-plus-plus.desktop ]]; then
 	# replace the Exec line to point to needed script that will set the xhost access everytime the notepad++ snap is ran from the chromeOS launcher
-	sudo sed -i /Exec/ s#=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/notepad-plus-plus_notepad-plus-plus\.desktop /snap/bin/notepad-plus-plus %F#=/opt/launch_notepad-plus-plus.sh# /usr/share/applications/notepad-plus-plus_notepad-plus-plus.desktop
+	sudo sed -i '/Exec/ s#=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/notepad-plus-plus_notepad-plus-plus\.desktop /snap/bin/notepad-plus-plus %F#=/opt/launch_notepad-plus-plus.sh#' /usr/share/applications/notepad-plus-plus_notepad-plus-plus.desktop
 	_line=$(cat /usr/share/applications/notepad-plus-plus_notepad-plus-plus.desktop | grep Exec)
 	if [[ $_line == "Exec=/opt/launch_notepad-plus-plus.sh" ]]; then
 		echo "All complete.  Use app drawer to find and run notepad++"

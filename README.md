@@ -9,4 +9,4 @@ The following are the steps to get notepad++ on a ChromeOS environment that has 
 
 1. Go to ChromeOS settings, search for linux, then under the Linux Development Environment click the "Setup" button.  Follow the onscreen setup.
 2. Once linux has been configured and installed run the following command:
-    <code>wget https://raw.githubusercontent.com/jharttech/notepad_pp_on_ChromeOS/main/install.sh</code>
+    <br><code>wget https://raw.githubusercontent.com/jharttech/notepad_pp_on_ChromeOS/main/install.sh</code>

@@ -16,6 +16,12 @@ sleep 3
 
 sudo snap install core notepad-plus-plus
 
+#Add a workspace directory for ease of use for students.
+#This also keeps notepad++ from trying to open all the files 
+#in the users home directory.
+
+mkdir ~/workspace
+
 #Verify notepad snap was installed
 if [[ -f /var/lib/snapd/desktop/applications/notepad-plus-plus_notepad-plus-plus.desktop ]]; then 
 	#Create a desktop icon
@@ -38,7 +44,7 @@ sudo tee launch_notepad-plus-plus.sh << EOF
 xhost +
 
 #launch notepad-plus-plus snap
-Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/notepad-plus-plus_notepad-plus-plus.desktop /snap/bin/notepad-plus-plus %F
+Exec=env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/notepad-plus-plus_notepad-plus-plus.desktop /snap/bin/notepad-plus-plus ~/workspace
 EOF
 
 sudo chmod +x launch_notepad-plus-plus.sh
@@ -56,7 +62,7 @@ if [[ -f /usr/share/applications/notepad-plus-plus_notepad-plus-plus.desktop ]];
 		echo "Error writing the desktop file.  Contact your Technology Administrator.  Exiting now!"
 	fi
 else
-	echo "\n\n\nApp Icon and shortcut was not created!! Exiting now!"
+	echo "App Icon and shortcut was not created!! Exiting now!"
 	exit 1
 fi
 

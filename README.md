@@ -2,7 +2,8 @@
 Script for heavy lifting of installing Notepad++ using linux development environement on ChromeOS
 
 # Notes
-This bash script is designed with a special use case.  I have a computer lab that has been converted to ChromeOS using the [FlexOS](https://chromeenterprise.google/intl/en_uk/os/chromeosflex/) download and setup.  All of the needed tools for the lab are web based with the exception of notepad++. I know there are alternatives to notepad++ but the curriculumn being used was designed specifically for notepad++.  
+This bash script is designed with a special use case.  I have a computer lab that has been converted to ChromeOS using the [FlexOS](https://chromeenterprise.google/intl/en_uk/os/chromeosflex/) download and setup.  All of the needed tools for the lab are web based with the exception of notepad++. I know there are alternatives to notepad++ but the curriculumn being used was designed specifically for notepad++.
+This script installs the snap version of notepad++ as it has the needed wine packages and configurations packaged.  
 
 # Setup
 The following are the steps to get notepad++ on a ChromeOS environment that has Linux Development Environment enabled.
